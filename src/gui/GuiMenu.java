@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -70,6 +71,7 @@ public class GuiMenu extends JFrame{
         miSair = new JMenuItem("Sair");
         
         contentPane = getContentPane();
+        
        miSair.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.ALT_MASK));
         
         mnSecretaria.add(mnCadastrar);
@@ -137,13 +139,25 @@ public class GuiMenu extends JFrame{
         });
         
         miCadDisciplina.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
                 GuiCadastroDeDisciplinas cadastroDisciplina = new GuiCadastroDeDisciplinas();
                  contentPane.removeAll();
                  contentPane.add(cadastroDisciplina);
                  contentPane.validate();
             }
+        });
+        
+        miCadProf.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent ae) {
+            try{
+                GuiCadastroDeProfessores cadastroProfessor = new GuiCadastroDeProfessores();
+                 contentPane.removeAll();
+                 contentPane.add(cadastroProfessor);
+                 contentPane.validate();
+            }catch(ParseException error){
+                     JOptionPane.showMessageDialog(null, "Errou");
+                }
+             }
         });
     }
       

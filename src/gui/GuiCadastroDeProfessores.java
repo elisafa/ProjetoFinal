@@ -1,7 +1,6 @@
 
 package gui;
 
-import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,17 +8,13 @@ import java.text.ParseException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.text.AbstractDocument;
 import javax.swing.text.MaskFormatter;
 
-public class GuiCadastroDeAlunos extends JPanel {
-    
+public class GuiCadastroDeProfessores extends JPanel {
     private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade, lbEmail, lbTelResi, lbTelCel, lbDataMatricula, lbTitulo;
     private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula,tfBairro, tfCidade, tfEmail;
     private MaskFormatter ftTelResi,ftTelCel, ftDataMatricula;
@@ -28,7 +23,7 @@ public class GuiCadastroDeAlunos extends JPanel {
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf;
     
-    public GuiCadastroDeAlunos() throws ParseException{
+    public GuiCadastroDeProfessores() throws ParseException{
         inicializarComponentes();
         definirEventos();
     }
@@ -36,7 +31,7 @@ public class GuiCadastroDeAlunos extends JPanel {
     public void inicializarComponentes() throws ParseException{
         setLayout(null);
         
-        lbTitulo = new JLabel("CADASTRO DE ALUNOS", JLabel.CENTER);
+        lbTitulo = new JLabel("CADASTRO DE PROFESSORES", JLabel.CENTER);
         lbBairro = new JLabel("Bairro");
         lbCidade = new JLabel("Cidade");
         lbComplemento = new JLabel("Complemento");
@@ -179,5 +174,4 @@ public class GuiCadastroDeAlunos extends JPanel {
             }
         });
     }
-    
 }
