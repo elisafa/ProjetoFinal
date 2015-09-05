@@ -26,14 +26,14 @@ public class GuiMenu extends JFrame{
                       miConsultAluno, miConsultProf, miConsultDisciplina,
                       miCriaTruma, miVisualizarTurma, miFinanAluno, miFinanProf,
                       miRelatAluno, miRelatProf, miEventCalendario, miInserirCalendario, miUtilCalculadora, miSair;
-    private Container contentPane;
+    public Container contentPane;
     
     public GuiMenu(){
         inicializarComponentes();
         definirEventos();
     }
     
-    private void inicializarComponentes(){
+    public void inicializarComponentes(){
         setTitle("Sistema STBP");
         setBounds(0, 0, 500, 500);
         //setLayout(null);
@@ -126,13 +126,23 @@ public class GuiMenu extends JFrame{
 
             public void actionPerformed(ActionEvent ae) {
                try{
-                 GuiCadastroDeAlunos cadastrar = new GuiCadastroDeAlunos();
+                 GuiCadastroDeAlunos cadastroAluno = new GuiCadastroDeAlunos();
                  contentPane.removeAll();
-                 contentPane.add(cadastrar);
+                 contentPane.add(cadastroAluno);
                  contentPane.validate();
                  }catch(ParseException error){
                      JOptionPane.showMessageDialog(null, "Errou");
                 }
+            }
+        });
+        
+        miCadDisciplina.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                GuiCadastroDeDisciplinas cadastroDisciplina = new GuiCadastroDeDisciplinas();
+                 contentPane.removeAll();
+                 contentPane.add(cadastroDisciplina);
+                 contentPane.validate();
             }
         });
     }

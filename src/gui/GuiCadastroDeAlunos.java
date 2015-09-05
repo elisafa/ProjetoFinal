@@ -1,6 +1,7 @@
 
 package gui;
 
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument;
 import javax.swing.text.MaskFormatter;
 
 public class GuiCadastroDeAlunos extends JPanel {
@@ -71,7 +73,7 @@ public class GuiCadastroDeAlunos extends JPanel {
         btCadastrar = new JButton("Cadastrar");
         btCancelar = new JButton("Cancelar");
         btLimpar = new JButton("Limpar");
-        
+                
         lbTitulo.setBounds(45, 15, 400, 20);
         lbTitulo.setFont(new Font("Arial", Font.BOLD, 20));
         add(lbTitulo);
@@ -115,7 +117,7 @@ public class GuiCadastroDeAlunos extends JPanel {
         
         lbEmail.setBounds(170, 195, 100, 25);
         add(lbEmail);
-        tfEmail.setBounds(170, 215, 310, 25);
+        tfEmail.setBounds(170, 215, 305, 25);
         add(tfEmail);
         
         lbUf.setBounds(25, 195, 100, 25);
@@ -140,7 +142,7 @@ public class GuiCadastroDeAlunos extends JPanel {
        
        lbMatricula.setBounds(350, 245, 100, 25);
        add(lbMatricula);
-       tfMatricula.setBounds(350, 265, 70, 25);
+       tfMatricula.setBounds(350, 265, 125, 25);
        add(tfMatricula);
        
        btCadastrar.setBounds(25,320, 100,25);
@@ -157,14 +159,24 @@ public class GuiCadastroDeAlunos extends JPanel {
          btCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
+                GuiMenu guimenu = new GuiMenu();
+                guimenu.contentPane.removeAll();
+                guimenu.contentPane.validate();
             }
         });
          btLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-//                tfLogin.setText(null);
-//                pfSenha.setText(null);
+                tfNome.setText(null);
+                tfRua.setText(null);
+                tfComplemento.setText(null);
+                tfNumero.setText(null);
+                tfBairro.setText(null);
+                tfCidade.setText(null);
+                tfEmail.setText(null);
+                ftfTelResi.setText(null);
+                ftfTelCel.setText(null);
+                ftfDataMatricula.setText(null);
             }
         });
     }
