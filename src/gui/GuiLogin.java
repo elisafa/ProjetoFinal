@@ -1,4 +1,3 @@
-
 package gui;
 
 import java.awt.Dimension;
@@ -13,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 
 public class GuiLogin extends JFrame{
     
@@ -68,8 +66,7 @@ public class GuiLogin extends JFrame{
         add(btOk);
         add(tfLogin);
         add(pfSenha);
-        add(lbImagem);
-        
+        add(lbImagem);   
     }
     
     public void definirEventos(){
@@ -100,9 +97,7 @@ public class GuiLogin extends JFrame{
                     JOptionPane.showMessageDialog(null, "Usuário inválido");
                 }
             }
-        });
-        
-        
+        });    
     }
   
     public static void main(String[] args) {
