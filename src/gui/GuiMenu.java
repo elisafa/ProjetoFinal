@@ -185,8 +185,38 @@ public class GuiMenu extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 GuiExcluirDisciplina excluirDisciplina = new GuiExcluirDisciplina();
                 contentPane.removeAll();
-                 contentPane.add(excluirDisciplina);
-                 contentPane.validate();
+                contentPane.add(excluirDisciplina);
+                contentPane.validate();
+            }
+        });
+        
+        miConsultAluno.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                GuiConsultarAlunos consultarAluno = new GuiConsultarAlunos();
+                contentPane.removeAll();
+                contentPane.add(consultarAluno);
+                contentPane.validate();
+            }
+        });
+        
+         miConsultProf.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                GuiConsultarProfessores consultarProfessor = new GuiConsultarProfessores();
+                contentPane.removeAll();
+                contentPane.add(consultarProfessor);
+                contentPane.validate();
+            }
+        });
+         
+         miConsultDisciplina.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                GuiConsultarDisciplinas consultarDisciplina = new GuiConsultarDisciplinas();
+                contentPane.removeAll();
+                contentPane.add(consultarDisciplina);
+                contentPane.validate();
             }
         });
     }
