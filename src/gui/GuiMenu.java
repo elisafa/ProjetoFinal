@@ -159,6 +159,36 @@ public class GuiMenu extends JFrame{
                 }
              }
         });
+        
+        miExProf.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                GuiExcluirProfessor excluirProfessor = new GuiExcluirProfessor();
+                contentPane.removeAll();
+                 contentPane.add(excluirProfessor);
+                 contentPane.validate();
+            }
+        });
+        
+        miExAluno.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                GuiExcluirAluno excluirAluno = new GuiExcluirAluno();
+                contentPane.removeAll();
+                 contentPane.add(excluirAluno);
+                 contentPane.validate();
+            }
+        });
+        
+        miExDisciplina.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                GuiExcluirDisciplina excluirDisciplina = new GuiExcluirDisciplina();
+                contentPane.removeAll();
+                 contentPane.add(excluirDisciplina);
+                 contentPane.validate();
+            }
+        });
     }
       
     public static void mainMenu() {

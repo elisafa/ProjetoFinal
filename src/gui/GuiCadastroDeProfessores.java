@@ -15,10 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 public class GuiCadastroDeProfessores extends JPanel {
-    private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade, lbEmail, lbTelResi, lbTelCel, lbDataMatricula, lbTitulo;
+    private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade, lbEmail, lbTelResi, lbTelCel, lbDataAdmissao, lbTitulo;
     private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula,tfBairro, tfCidade, tfEmail;
-    private MaskFormatter ftTelResi,ftTelCel, ftDataMatricula;
-    private JFormattedTextField ftfTelResi, ftfTelCel, ftfDataMatricula;
+    private MaskFormatter ftTelResi,ftTelCel, ftDataAdmissao;
+    private JFormattedTextField ftfTelResi, ftfTelCel, ftfDataAdmissao;
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf;
@@ -35,7 +35,7 @@ public class GuiCadastroDeProfessores extends JPanel {
         lbBairro = new JLabel("Bairro");
         lbCidade = new JLabel("Cidade");
         lbComplemento = new JLabel("Complemento");
-        lbDataMatricula = new JLabel("Dt. Matrícula");
+        lbDataAdmissao = new JLabel("Dt. Admissao");
         lbEmail = new JLabel("E-mail");
         lbMatricula = new JLabel("Matrícula");
         lbNome = new JLabel("Nome");
@@ -58,11 +58,11 @@ public class GuiCadastroDeProfessores extends JPanel {
         tfRua = new JTextField();
         tfEmail = new JTextField();
 
-        ftDataMatricula = new MaskFormatter("##/##/####");
+        ftDataAdmissao = new MaskFormatter("##/##/####");
         ftTelCel = new MaskFormatter("(##) #####-####");
         ftTelResi = new MaskFormatter("(##) #####-####");
         
-        ftfDataMatricula = new JFormattedTextField(ftDataMatricula);
+        ftfDataAdmissao = new JFormattedTextField(ftDataAdmissao);
         ftfTelResi = new JFormattedTextField(ftTelResi);
         ftfTelCel = new JFormattedTextField(ftTelCel);
         
@@ -131,10 +131,10 @@ public class GuiCadastroDeProfessores extends JPanel {
        ftfTelCel.setBounds(140, 265, 100, 25);
        add(ftfTelCel);
        
-       lbDataMatricula.setBounds(255, 245, 100, 25);
-       add(lbDataMatricula);
-       ftfDataMatricula.setBounds(255, 265, 70, 25);
-       add(ftfDataMatricula);
+       lbDataAdmissao.setBounds(255, 245, 100, 25);
+       add(lbDataAdmissao);
+       ftfDataAdmissao.setBounds(255, 265, 70, 25);
+       add(ftfDataAdmissao);
        
        lbMatricula.setBounds(350, 245, 100, 25);
        add(lbMatricula);
@@ -170,7 +170,7 @@ public class GuiCadastroDeProfessores extends JPanel {
                 tfEmail.setText(null);
                 ftfTelResi.setText(null);
                 ftfTelCel.setText(null);
-                ftfDataMatricula.setText(null);
+                ftfDataAdmissao.setText(null);
             }
         });
     }
