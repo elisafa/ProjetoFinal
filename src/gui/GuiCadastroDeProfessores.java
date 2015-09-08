@@ -155,7 +155,7 @@ public class GuiCadastroDeProfessores extends JPanel {
          btCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
+                setVisible(false);
             }
         });
          btLimpar.addActionListener(new ActionListener() {

@@ -18,7 +18,7 @@ public class GuiCadastroDeDisciplinas extends JPanel{
     
     public GuiCadastroDeDisciplinas(){
         inicializarComponentes();
-//        definirEventos();
+        definirEventos();
     }
     
     public void inicializarComponentes(){
@@ -72,10 +72,11 @@ public class GuiCadastroDeDisciplinas extends JPanel{
             }
         });
         
-        btCancelar.addActionListener(new ActionListener() {
+         btCancelar.addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+            public void actionPerformed(ActionEvent ae) {
+                setVisible(false);
+                
             }
         });
         

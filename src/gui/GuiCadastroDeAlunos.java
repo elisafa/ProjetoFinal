@@ -27,6 +27,7 @@ public class GuiCadastroDeAlunos extends JPanel {
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf;
+    private Container contentPane;
     
     public GuiCadastroDeAlunos() throws ParseException{
         inicializarComponentes();
@@ -158,11 +159,13 @@ public class GuiCadastroDeAlunos extends JPanel {
     
     public void definirEventos(){
          btCancelar.addActionListener(new ActionListener() {
-            @Override
+
             public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
+                setVisible(false);
+                
             }
         });
+         
          btLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

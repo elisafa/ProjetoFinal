@@ -25,7 +25,7 @@ public class GuiMenu extends JFrame{
                       miCriaTruma, miVisualizarTurma, miFinanAluno, miFinanProf,
                       miRelatAluno, miRelatProf, miEventCalendario, miInserirCalendario,
                       miUtilCalculadora, miSair, miNovaSenha;
-    public Container contentPane;
+    private Container contentPane;
     
     public GuiMenu(){
         inicializarComponentes();

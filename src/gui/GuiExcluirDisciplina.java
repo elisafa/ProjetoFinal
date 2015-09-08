@@ -2,6 +2,8 @@
 package gui;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,5 +52,11 @@ public class GuiExcluirDisciplina extends JPanel{
     
     public void definirEventos(){
         
+        btCancelar.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+                setVisible(false);
+            }
+        });
     }
 }
