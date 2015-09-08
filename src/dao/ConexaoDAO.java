@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class ConexaoDAO {
-     public Connection conexao = null;
+    public Connection conexao = null;
+    
     private final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private final String DB = "BD_STBP";
     private final String URL = "jdbc:sqlserver://localhost:1433;databaseName="+DB+";";
