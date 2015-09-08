@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -27,7 +28,7 @@ public class GuiCadastroDeAlunos extends JPanel {
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf;
-    private Container contentPane;
+    private ButtonGroup grupo;
     
     public GuiCadastroDeAlunos() throws ParseException{
         inicializarComponentes();
@@ -54,6 +55,7 @@ public class GuiCadastroDeAlunos extends JPanel {
         rbMasculino = new JRadioButton("M");
         rbFeminino = new JRadioButton("F");
         cbUf = new JComboBox();
+        grupo = new ButtonGroup();
         
         tfBairro = new JTextField();
         tfCidade = new JTextField();
@@ -91,6 +93,9 @@ public class GuiCadastroDeAlunos extends JPanel {
         add(rbMasculino);
         rbFeminino.setBounds(430, 65,50, 25);
         add(rbFeminino);
+        
+        grupo.add(rbMasculino);
+        grupo.add(rbFeminino);
         
         lbRua.setBounds(25, 95, 300, 25);
         add(lbRua);
@@ -181,6 +186,31 @@ public class GuiCadastroDeAlunos extends JPanel {
                 ftfDataMatricula.setText(null);
             }
         });
+         
+         btCadastrar.addActionListener(new ActionListener() {
+
+             public void actionPerformed(ActionEvent ae) {
+                 String sexo ="";
+                 String nome = tfNome.getText();
+                 String rua = tfRua.getText();
+                 String numero = tfNumero.getText();
+                 String complemento = tfComplemento.getText();
+                 String bairro = tfBairro.getText();
+                 String cidade = tfCidade.getText();
+                 String email = tfEmail.getText();
+                 
+                 
+                 if(rbFeminino.isSelected()){
+                     sexo = rbFeminino.getText();
+                 }else{
+                     sexo = rbMasculino.getText(); 
+                 }
+                 
+                
+                 
+                 
+             }
+         });
     }
     
 }
