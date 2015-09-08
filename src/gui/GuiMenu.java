@@ -23,7 +23,8 @@ public class GuiMenu extends JFrame{
                       miExAluno, miExProf, miExDisciplina,
                       miConsultAluno, miConsultProf, miConsultDisciplina,
                       miCriaTruma, miVisualizarTurma, miFinanAluno, miFinanProf,
-                      miRelatAluno, miRelatProf, miEventCalendario, miInserirCalendario, miUtilCalculadora, miSair;
+                      miRelatAluno, miRelatProf, miEventCalendario, miInserirCalendario,
+                      miUtilCalculadora, miSair, miNovaSenha;
     public Container contentPane;
     
     public GuiMenu(){
@@ -66,6 +67,7 @@ public class GuiMenu extends JFrame{
         miRelatAluno = new JMenuItem("Relatório do aluno");
         miRelatProf = new JMenuItem("Relatório do professor");
         miSair = new JMenuItem("Sair");
+        miNovaSenha = new JMenuItem("Cadastrar Senha");
         
         contentPane = getContentPane();
         
@@ -87,6 +89,7 @@ public class GuiMenu extends JFrame{
         mnConsultar.add(miConsultProf);
         
         mnSecretaria.add(miSair);
+
         
         mnTurma.add(miCriaTruma);
         mnTurma.add(miVisualizarTurma);
@@ -95,7 +98,8 @@ public class GuiMenu extends JFrame{
         mnFinancas.add(miFinanProf);
         
         mnUtilitarios.add(miUtilCalculadora);
-        
+        mnUtilitarios.add(miNovaSenha);
+                
         mnEventos.add(miEventCalendario);
         mnEventos.add(miInserirCalendario);
         

@@ -1,6 +1,8 @@
 package gui;
 
+import dao.ConexaoDAO;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,10 +34,11 @@ public class GuiLogin extends JFrame{
         setBounds(0, 0, 315, 350);
         setLayout(null);
         
-        lbTitulo = new JLabel("Insira seu nome e senha para entrar");
+        lbTitulo = new JLabel("Insira seu nome e senha");
         lbLogin = new JLabel("Login");
         lbSenha = new JLabel("Senha");
-        imagem = new ImageIcon("E:/SENAC/PROJETO FINAL/seminarioLogo.jpg");
+        imagem = new ImageIcon("g:/SENAC/PROJETO FINAL/seminarioLogo.jpg");
+
         lbImagem = new JLabel(imagem);
         tfLogin = new JTextField();
         btOk = new JButton("Ok");
@@ -47,10 +50,11 @@ public class GuiLogin extends JFrame{
         btCancelar.setMnemonic(KeyEvent.VK_C);
         btLimpar.setMnemonic(KeyEvent.VK_L);
         
-        lbTitulo.setBounds(50, 20, 400, 25);
+        lbTitulo.setBounds(80, 20, 400, 25);
         lbLogin.setBounds(20, 60, 50, 25);
         lbSenha.setBounds(20, 100, 50, 25);
         lbImagem.setBounds(45, 170, 217, 147);
+        
         
         tfLogin.setBounds(60, 60, 230, 25);
         pfSenha.setBounds(60, 100, 230, 25);
@@ -88,18 +92,24 @@ public class GuiLogin extends JFrame{
         btOk.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                
                 String nome = tfLogin.getText();
                 String senha = String.valueOf(pfSenha.getPassword());
-                if(nome.equals("") && senha.equals("")){
+                ConexaoDAO conectarBanco = new ConexaoDAO();
+                
+                if(nome.equals("ADM") && senha.equals("ADM")){
+                    conectarBanco.getConexao();
                     GuiMenu.mainMenu();
                     setVisible(false);
-                }else{
+                    
+                }else {
                     JOptionPane.showMessageDialog(null, "Usuário inválido");
+                
                 }
             }
         });    
     }
-  
+    
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

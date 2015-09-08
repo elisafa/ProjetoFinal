@@ -9,7 +9,7 @@ public class ConexaoDAO {
     public Connection conexao = null;
     
     private final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private final String DB = "BD_STBP";
+    private final String DB = "STBP";
     private final String URL = "jdbc:sqlserver://localhost:1433;databaseName="+DB+";";
     private final String USER = "sa";
     private final String PASSWORD = "senac";
@@ -26,6 +26,7 @@ public class ConexaoDAO {
             return false;
         } catch (SQLException erro) {
         JOptionPane.showMessageDialog(null, "Banco de dados não encontrado");
+            System.exit(0);
             return false;
         }
     }
