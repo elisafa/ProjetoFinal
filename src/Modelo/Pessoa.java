@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Pessoas {
+public class Pessoa {
     private String nome, logradouro, cpf, sexo, bairro, cidade, uf, email, teleResidencial, TelCelular;
     private int numero, codigo;
 

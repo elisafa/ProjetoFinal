@@ -1,7 +1,7 @@
 
 package Modelo;
 
-public class Turmas extends Pessoas{
+public class Turma extends Pessoa{
     private int sala;
 
     public int getSala() {

@@ -1,7 +1,7 @@
 
 package dao;
 
-import Modelo.Funcionarios;
+import Modelo.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,12 +10,12 @@ public class FuncionarioDAO {
     
     static PreparedStatement statement = null;
      
-     public static void cadastrar(Funcionarios funcionario) {
+     public void cadastrarUsuario(Funcionario funcionario) {
          
         ConexaoDAO conexaoBanco = new ConexaoDAO();
         if (conexaoBanco.getConexao()) {
             try {
-            String sql = "INSERT INTO TB_FUNCIONARIOS(FUN_LOGIN,FUN_SENHA) VALUES (?,?);";
+            String sql = "INSERT INTO TB_FUNCIONARIOS(FUN_LOGIN, FUN_SENHA) VALUES (?,?);";
             statement = conexaoBanco.conexao.prepareStatement(sql);
             statement.setString(1, funcionario.getLogin());
             statement.setString(2, funcionario.getSenha());
@@ -29,4 +29,6 @@ public class FuncionarioDAO {
             System.out.println("Erro ao conectar!");
         }
      }
+     
+     
 }

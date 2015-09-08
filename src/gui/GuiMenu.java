@@ -1,5 +1,6 @@
 package gui;
 
+import dao.FuncionarioDAO;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -217,6 +218,16 @@ public class GuiMenu extends JFrame{
                 GuiConsultarDisciplinas consultarDisciplina = new GuiConsultarDisciplinas();
                 contentPane.removeAll();
                 contentPane.add(consultarDisciplina);
+                contentPane.validate();
+            }
+        });
+         
+         miNovaSenha.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+                GuiCadastrarUsuario novaSenha = new GuiCadastrarUsuario();
+                contentPane.removeAll();
+                contentPane.add(novaSenha);
                 contentPane.validate();
             }
         });

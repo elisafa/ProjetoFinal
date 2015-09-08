@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Disciplinas {
+public class Disciplina {
     private int codigo, credito;
     private String nome;
 

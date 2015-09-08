@@ -1,7 +1,7 @@
 
 package Modelo;
 
-public class Professores {
+public class Professor {
     private String dataAdmissao;
 
     public String getDataAdmissao() {

@@ -97,7 +97,7 @@ public class GuiLogin extends JFrame{
                 String senha = String.valueOf(pfSenha.getPassword());
                 ConexaoDAO conectarBanco = new ConexaoDAO();
                 
-                if(nome.equals("") && senha.equals("")){
+                if(nome.equals("adm") && senha.equals("adm")){
                     conectarBanco.getConexao();
                     GuiMenu.mainMenu();
                     setVisible(false);

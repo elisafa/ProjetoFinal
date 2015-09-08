@@ -1,7 +1,7 @@
 
 package Modelo;
 
-public class Igrejas{
+public class Igreja{
     private String nome;
     private int codigo;
 

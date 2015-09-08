@@ -1,7 +1,7 @@
 
 package Modelo;
 
-public class Alunos extends Pessoas{
+public class Aluno extends Pessoa{
     private String dataMatricula;
 
     public String getDataMatricula() {

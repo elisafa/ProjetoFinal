@@ -1,7 +1,7 @@
 
 package Modelo;
 
-public class Funcionarios extends Pessoas{
+public class Funcionario extends Pessoa{
 
     private String login;
     private String senha;
