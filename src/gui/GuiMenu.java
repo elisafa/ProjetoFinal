@@ -25,7 +25,7 @@ public class GuiMenu extends JFrame{
                       miConsultAluno, miConsultProf, miConsultDisciplina,
                       miCriaTruma, miVisualizarTurma, miFinanAluno, miFinanProf,
                       miRelatAluno, miRelatProf, miEventCalendario, miInserirCalendario,
-                      miUtilCalculadora, miSair, miNovaSenha;
+                      miUtilCalculadora, miSair, miNovaSenha, miCadFuncionario;
     private Container contentPane;
     
     public GuiMenu(){
@@ -69,6 +69,7 @@ public class GuiMenu extends JFrame{
         miRelatProf = new JMenuItem("Relatório do professor");
         miSair = new JMenuItem("Sair");
         miNovaSenha = new JMenuItem("Cadastrar Senha");
+        miCadFuncionario = new JMenuItem("Cadastrar funcionário");
         
         contentPane = getContentPane();
         
@@ -100,6 +101,7 @@ public class GuiMenu extends JFrame{
         
         mnUtilitarios.add(miUtilCalculadora);
         mnUtilitarios.add(miNovaSenha);
+        mnUtilitarios.add(miCadFuncionario);
                 
         mnEventos.add(miEventCalendario);
         mnEventos.add(miInserirCalendario);
@@ -146,6 +148,19 @@ public class GuiMenu extends JFrame{
                  contentPane.removeAll();
                  contentPane.add(cadastroDisciplina);
                  contentPane.validate();
+            }
+        });
+        
+        miCadFuncionario.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                try{
+                GuiCadastrarFuncionario cadastroFuncionario = new GuiCadastrarFuncionario();
+                 contentPane.removeAll();
+                 contentPane.add(cadastroFuncionario);
+                 contentPane.validate();
+            }catch(ParseException error){
+                     JOptionPane.showMessageDialog(null, "Errou");
+                }
             }
         });
         

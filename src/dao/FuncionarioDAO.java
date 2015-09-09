@@ -15,7 +15,7 @@ public class FuncionarioDAO {
         ConexaoDAO conexaoBanco = new ConexaoDAO();
         if (conexaoBanco.getConexao()) {
             try {
-            String sql = "INSERT INTO TB_FUNCIONARIOS(FUN_LOGIN, FUN_SENHA) VALUES (?,?);";
+            String sql = "INSERT INTO TB_USUARIOS(USU_LOGIN, USU_SENHA) VALUES (?,?);";
             statement = conexaoBanco.conexao.prepareStatement(sql);
             statement.setString(1, funcionario.getLogin());
             statement.setString(2, funcionario.getSenha());
@@ -30,5 +30,25 @@ public class FuncionarioDAO {
         }
      }
      
-     
+     public void cadastrarFuncionario(Funcionario funcionario) {
+         
+        ConexaoDAO conexaoBanco = new ConexaoDAO();
+        if (conexaoBanco.getConexao()) {
+            try {
+            String sql1 = "INSERT INTO TB_FUNCIONARIOS(FUN_NOME,FUN_LOGRADOURO, FUN_NUMERO, FUN_DATA_ADMISSAO"
+                                                      +") VALUES (?,?,?);";
+            statement = conexaoBanco.conexao.prepareStatement(sql1);
+            statement.setString(1, funcionario.getNome());
+            statement.setString(2, funcionario.getLogradouro());
+            statement.setString(3, funcionario.getDataAdmissao());
+            statement.execute();
+            statement.close();            
+            conexaoBanco.fecharConexao();
+            } catch (SQLException erro) {
+                System.out.println(erro.toString());
+            }
+        } else {
+            System.out.println("Erro ao conectar!");
+        }
+     }
 }

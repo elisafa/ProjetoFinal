@@ -3,9 +3,11 @@ package dao;
 
 import Modelo.Aluno;
 import Modelo.Funcionario;
+import gui.GuiCadastroDeAlunos;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class AlunoDAO {
@@ -32,7 +34,7 @@ public class AlunoDAO {
         }
      }
      
-     public static void listarEstado() {
+     public void listarEstado(){
          
         ArrayList<String> estados = new ArrayList<>();
          

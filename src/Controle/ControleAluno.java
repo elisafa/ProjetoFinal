@@ -13,7 +13,7 @@ public class ControleAluno {
     public void cadastrarAluno(String nome, String logradouro, String numero, 
                                String complemento, String dataMatricula,
                                String bairro, String cidade, String email, 
-                               String telResi, String telCel){
+                               String telResi, String telCel, String estado){
         
         Aluno aluno = new Aluno();
         aluno.setNome(nome);
@@ -26,6 +26,7 @@ public class ControleAluno {
         aluno.setEmail(email);
         aluno.setTeleResidencial(telResi);
         aluno.setTelCelular(telCel);
+        aluno.setUf(estado);
  
         alunoDAO.cadastrarAluno(aluno);
     }  

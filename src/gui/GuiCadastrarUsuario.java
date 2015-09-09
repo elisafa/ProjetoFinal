@@ -77,10 +77,10 @@ public class GuiCadastrarUsuario extends JPanel {
 
             public void actionPerformed(ActionEvent ae) {
                 
-               String nome = tfLogin.getText();
+               String login = tfLogin.getText();
                String senha = String.valueOf(tfSenha.getText());
                
-               controleFuncionario.cadastrarUsuario(nome, senha);
+               controleFuncionario.cadastrarUsuario(login, senha);
             }
         });
         
