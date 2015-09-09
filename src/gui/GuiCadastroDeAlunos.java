@@ -6,7 +6,11 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -133,6 +137,7 @@ public class GuiCadastroDeAlunos extends JPanel {
         lbUf.setBounds(25, 195, 100, 25);
         add(lbUf);
         cbUf.setBounds(25, 215,140, 25);
+        
         add(cbUf);
         
        lbTelResi.setBounds(25, 245, 100, 25);
@@ -209,7 +214,7 @@ public class GuiCadastroDeAlunos extends JPanel {
                  }else{
                      sexo = rbMasculino.getText(); 
                  }
-                 
+               
                 controleAluno.cadastrarAluno(nome, bairro, numero, complemento, 
                                              dataMatricula, bairro, cidade, 
                                              email, telResi, telCel);

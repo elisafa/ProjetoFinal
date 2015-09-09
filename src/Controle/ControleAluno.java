@@ -4,6 +4,8 @@ import Modelo.Aluno;
 import Modelo.Funcionario;
 import dao.AlunoDAO;
 import dao.FuncionarioDAO;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ControleAluno {
     AlunoDAO alunoDAO = new AlunoDAO();
@@ -26,5 +28,5 @@ public class ControleAluno {
         aluno.setTelCelular(telCel);
  
         alunoDAO.cadastrarAluno(aluno);
-    }
+    }  
 }
