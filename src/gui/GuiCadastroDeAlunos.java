@@ -1,6 +1,7 @@
 
 package gui;
 
+import Controle.ControleAluno;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,8 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.MaskFormatter;
 
 public class GuiCadastroDeAlunos extends JPanel {
+    
+    ControleAluno controleAluno = new ControleAluno();
     
     private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade, lbEmail, lbTelResi, lbTelCel, lbDataMatricula, lbTitulo;
     private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula,tfBairro, tfCidade, tfEmail;
@@ -166,8 +169,7 @@ public class GuiCadastroDeAlunos extends JPanel {
          btCancelar.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent ae) {
-                setVisible(false);
-                
+                setVisible(false);  
             }
         });
          
@@ -198,7 +200,9 @@ public class GuiCadastroDeAlunos extends JPanel {
                  String bairro = tfBairro.getText();
                  String cidade = tfCidade.getText();
                  String email = tfEmail.getText();
-                 
+                 String telResi = ftfTelResi.getText();
+                 String telCel = ftfTelCel.getText();
+                 String dataMatricula = ftfDataMatricula.getText();
                  
                  if(rbFeminino.isSelected()){
                      sexo = rbFeminino.getText();
@@ -206,8 +210,9 @@ public class GuiCadastroDeAlunos extends JPanel {
                      sexo = rbMasculino.getText(); 
                  }
                  
-                
-                 
+                controleAluno.cadastrarAluno(nome, bairro, numero, complemento, 
+                                             dataMatricula, bairro, cidade, 
+                                             email, telResi, telCel);
                  
              }
          });

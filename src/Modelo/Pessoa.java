@@ -1,8 +1,8 @@
 package Modelo;
 
 public class Pessoa {
-    private String nome, logradouro, cpf, sexo, bairro, cidade, uf, email, teleResidencial, TelCelular;
-    private int numero, codigo;
+    private String nome, logradouro, cpf, sexo, bairro, cidade, uf, email, teleResidencial, TelCelular, numero, complemento;
+    private int codigo;
 
     public String getNome() {
         return nome;
@@ -60,11 +60,11 @@ public class Pessoa {
         this.uf = uf;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -98,6 +98,14 @@ public class Pessoa {
 
     public void setTelCelular(String TelCelular) {
         this.TelCelular = TelCelular;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
     
     

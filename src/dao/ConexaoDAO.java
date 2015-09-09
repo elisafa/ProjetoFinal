@@ -22,7 +22,6 @@ public class ConexaoDAO {
         return true;
         } catch (ClassNotFoundException erro) {
         JOptionPane.showMessageDialog(null, "Drive não encontrado");
-            
             return false;
         } catch (SQLException erro) {
         JOptionPane.showMessageDialog(null, "Banco de dados não encontrado");
@@ -32,7 +31,6 @@ public class ConexaoDAO {
     }
     
     public void fecharConexao() {
-        
         try {
             conexao.close();
             JOptionPane.showMessageDialog(null, "Desconectado");
