@@ -18,7 +18,7 @@ public class ControleFuncionario {
     
     public void cadastrarFuncionario(String nome, String logradouro, String numero, 
                                String complemento,String bairro, String cidade, String email, 
-                               String telResi, String telCel, String dataAdmissao){
+                               String telResi, String telCel, String dataAdmissao, String estado, String sexo){
         
         Funcionario funcionario = new Funcionario();
         funcionario.setNome(nome);
@@ -31,6 +31,7 @@ public class ControleFuncionario {
         funcionario.setEmail(email);
         funcionario.setTeleResidencial(telResi);
         funcionario.setTelCelular(telCel);
+        funcionario.setUf(estado);
  
        funcionarioDAO.cadastrarFuncionario(funcionario);
     }  

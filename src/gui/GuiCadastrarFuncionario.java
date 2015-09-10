@@ -22,8 +22,8 @@ public class GuiCadastrarFuncionario extends JPanel{
     ControleFuncionario controleFuncionario = new ControleFuncionario();
 
     private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade, lbEmail, lbTelResi, lbTelCel, lbDataAdmissao, lbTitulo;
-    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula,tfBairro, tfCidade, tfEmail;
-    private MaskFormatter ftTelResi,ftTelCel, ftDataAdmissao;
+    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula,tfBairro, tfCidade, tfEmail, tfDataAdmissao;
+    private MaskFormatter ftTelResi,ftTelCel;
     private JFormattedTextField ftfTelResi, ftfTelCel, ftfDataAdmissao;
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
@@ -65,12 +65,13 @@ public class GuiCadastrarFuncionario extends JPanel{
         tfNumero = new JTextField();
         tfRua = new JTextField();
         tfEmail = new JTextField();
+        tfDataAdmissao = new JTextField();
 
-        ftDataAdmissao = new MaskFormatter("##/##/####");
+//        ftDataAdmissao = new MaskFormatter("##/##/####");
         ftTelCel = new MaskFormatter("(##) #####-####");
         ftTelResi = new MaskFormatter("(##) #####-####");
         
-        ftfDataAdmissao = new JFormattedTextField(ftDataAdmissao);
+//        ftfDataAdmissao = new JFormattedTextField(ftDataAdmissao);
         ftfTelResi = new JFormattedTextField(ftTelResi);
         ftfTelCel = new JFormattedTextField(ftTelCel);
         
@@ -141,8 +142,8 @@ public class GuiCadastrarFuncionario extends JPanel{
        
        lbDataAdmissao.setBounds(255, 245, 100, 25);
        add(lbDataAdmissao);
-       ftfDataAdmissao.setBounds(255, 265, 70, 25);
-       add(ftfDataAdmissao);
+       tfDataAdmissao.setBounds(255, 265, 70, 25);
+       add(tfDataAdmissao);
        
        lbMatricula.setBounds(350, 245, 100, 25);
        add(lbMatricula);
@@ -178,7 +179,7 @@ public class GuiCadastrarFuncionario extends JPanel{
                 tfEmail.setText(null);
                 ftfTelResi.setText(null);
                 ftfTelCel.setText(null);
-                ftfDataAdmissao.setText(null);
+                tfDataAdmissao.setText(null);
                 
             }
         });
@@ -196,16 +197,19 @@ public class GuiCadastrarFuncionario extends JPanel{
                  String email = tfEmail.getText();
                  String telResi = ftfTelResi.getText();
                  String telCel = ftfTelCel.getText();
-                 String dataAdmissao = ftfDataAdmissao.getText();
+                 String dataAdmissao = tfDataAdmissao.getText();
                  
                  if(rbFeminino.isSelected()){
-                     sexo = rbFeminino.getText();
+                     sexo = "1";
                  }else{
-                     sexo = rbMasculino.getText(); 
+                     sexo = "2"; 
                  }
-            controleFuncionario.cadastrarFuncionario(nome, bairro, numero, complemento,
-                                                    bairro, cidade, email, telResi, 
-                                                    telCel, dataAdmissao);
+                 
+                String estado = String.valueOf(cbUf.getSelectedIndex());
+                 
+            controleFuncionario.cadastrarFuncionario(nome, sexo, rua, numero, complemento,
+                                                    bairro, cidade, estado, email,
+                                                    telResi, telCel, dataAdmissao);
              }
         });
     }
