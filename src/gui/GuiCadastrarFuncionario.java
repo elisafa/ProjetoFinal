@@ -28,6 +28,8 @@ public class GuiCadastrarFuncionario extends JPanel{
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf;
+    String[] cbEstadosItens = {"Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo", 
+                               "Rio Grande do Norte"};
     
     public GuiCadastrarFuncionario() throws ParseException{
         inicializarComponentes();
@@ -53,7 +55,7 @@ public class GuiCadastrarFuncionario extends JPanel{
         lbUf = new JLabel("Estado");
         rbMasculino = new JRadioButton("M");
         rbFeminino = new JRadioButton("F");
-        cbUf = new JComboBox();
+        cbUf = new JComboBox(cbEstadosItens);
         
         tfBairro = new JTextField();
         tfCidade = new JTextField();
@@ -177,6 +179,7 @@ public class GuiCadastrarFuncionario extends JPanel{
                 ftfTelResi.setText(null);
                 ftfTelCel.setText(null);
                 ftfDataAdmissao.setText(null);
+                
             }
         });
          
