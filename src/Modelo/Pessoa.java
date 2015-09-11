@@ -1,8 +1,8 @@
 package Modelo;
 
 public class Pessoa {
-    private String nome, logradouro, cpf, sexo, bairro, cidade, uf, email, teleResidencial, TelCelular, numero, complemento;
-    private int codigo;
+    private String nome, logradouro, cpf, email, teleResidencial, TelCelular, numero, complemento;
+    private int codigo, uf, cidade, bairro, sexo;
 
     public String getNome() {
         return nome;
@@ -28,35 +28,35 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getSexo() {
+    public int getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(int sexo) {
         this.sexo = sexo;
     }
 
-    public String getBairro() {
+    public int getBairro() {
         return bairro;
     }
 
-    public void setBairro(String bairro) {
+    public void setBairro(int bairro) {
         this.bairro = bairro;
     }
 
-    public String getCidade() {
+    public int getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
+    public void setCidade(int cidade) {
         this.cidade = cidade;
     }
 
-    public String getUf() {
+    public int getUf() {
         return uf;
     }
 
-    public void setUf(String uf) {
+    public void setUf(int uf) {
         this.uf = uf;
     }
 

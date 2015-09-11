@@ -12,8 +12,8 @@ public class ControleAluno {
     
     public void cadastrarAluno(String nome, String logradouro, String numero, 
                                String complemento, String dataMatricula,
-                               String bairro, String cidade, String email, 
-                               String telResi, String telCel, String estado){
+                               int bairro, int cidade, String email, 
+                               String telResi, String telCel, int estado){
         
         Aluno aluno = new Aluno();
         aluno.setNome(nome);

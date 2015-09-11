@@ -202,8 +202,8 @@ public class GuiCadastroDeAlunos extends JPanel {
                  String rua = tfRua.getText();
                  String numero = tfNumero.getText();
                  String complemento = tfComplemento.getText();
-                 String bairro = tfBairro.getText();
-                 String cidade = tfCidade.getText();
+                 int bairro = 1;// tfBairro.getText();
+                 int cidade = 1; //tfCidade.getText();
                  String email = tfEmail.getText();
                  String telResi = ftfTelResi.getText();
                  String telCel = ftfTelCel.getText();
@@ -215,11 +215,9 @@ public class GuiCadastroDeAlunos extends JPanel {
                      sexo = rbMasculino.getText(); 
                  }
                  
-                String estado = cbUf.toString();
-               
-                controleAluno.cadastrarAluno(nome, bairro, numero, complemento, 
-                                             dataMatricula, bairro, cidade, 
-                                             email, telResi, telCel, estado);
+                //String estado = cbUf.toString();
+                int estado = 1;
+                controleAluno.cadastrarAluno(nome, numero, numero, complemento, dataMatricula, bairro, cidade, email, telResi, telCel, estado);
                  
              }
          });

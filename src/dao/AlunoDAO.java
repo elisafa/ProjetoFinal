@@ -22,7 +22,7 @@ public class AlunoDAO {
             String sql = "INSERT INTO TB_ALUNOS(ALU_NOME, ALU_BAIRRO) VALUES (?,?);";
             statement = conexaoBanco.conexao.prepareStatement(sql);
             statement.setString(1, aluno.getNome());
-            statement.setString(2, aluno.getBairro());
+            statement.setInt(2, aluno.getBairro());
             statement.execute();
             statement.close();
             conexaoBanco.fecharConexao();

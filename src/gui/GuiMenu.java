@@ -25,7 +25,7 @@ public class GuiMenu extends JFrame{
                       miConsultAluno, miConsultProf, miConsultDisciplina,
                       miCriaTruma, miVisualizarTurma, miFinanAluno, miFinanProf,
                       miRelatAluno, miRelatProf, miEventCalendario, miInserirCalendario,
-                      miUtilCalculadora, miSair, miNovaSenha, miCadFuncionario;
+                      miUtilCalculadora, miSair, miCadFuncionario;
     private Container contentPane;
     
     public GuiMenu(){
@@ -68,7 +68,6 @@ public class GuiMenu extends JFrame{
         miRelatAluno = new JMenuItem("Relatório do aluno");
         miRelatProf = new JMenuItem("Relatório do professor");
         miSair = new JMenuItem("Sair");
-        miNovaSenha = new JMenuItem("Cadastrar Senha");
         miCadFuncionario = new JMenuItem("Cadastrar funcionário");
         
         contentPane = getContentPane();
@@ -100,7 +99,6 @@ public class GuiMenu extends JFrame{
         mnFinancas.add(miFinanProf);
         
         mnUtilitarios.add(miUtilCalculadora);
-        mnUtilitarios.add(miNovaSenha);
         mnUtilitarios.add(miCadFuncionario);
                 
         mnEventos.add(miEventCalendario);
@@ -142,14 +140,14 @@ public class GuiMenu extends JFrame{
             }
         });
         
-        miCadDisciplina.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                GuiCadastroDeDisciplinas cadastroDisciplina = new GuiCadastroDeDisciplinas();
-                 contentPane.removeAll();
-                 contentPane.add(cadastroDisciplina);
-                 contentPane.validate();
-            }
-        });
+//        miCadDisciplina.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                GuiCadastroDeDisciplinas cadastroDisciplina = new GuiCadastroDeDisciplinas();
+//                 contentPane.removeAll();
+//                 contentPane.add(cadastroDisciplina);
+//                 contentPane.validate();
+//            }
+//        });
         
         miCadFuncionario.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -164,18 +162,18 @@ public class GuiMenu extends JFrame{
             }
         });
         
-        miCadProf.addActionListener(new ActionListener() {
-             public void actionPerformed(ActionEvent ae) {
-            try{
-                GuiCadastroDeProfessores cadastroProfessor = new GuiCadastroDeProfessores();
-                 contentPane.removeAll();
-                 contentPane.add(cadastroProfessor);
-                 contentPane.validate();
-            }catch(ParseException error){
-                     JOptionPane.showMessageDialog(null, "Errou");
-                }
-             }
-        });
+//        miCadProf.addActionListener(new ActionListener() {
+//             public void actionPerformed(ActionEvent ae) {
+//            try{
+//                GuiCadastroDeProfessores cadastroProfessor = new GuiCadastroDeProfessores();
+//                 contentPane.removeAll();
+//                 contentPane.add(cadastroProfessor);
+//                 contentPane.validate();
+//            }catch(ParseException error){
+//                     JOptionPane.showMessageDialog(null, "Errou");
+//                }
+//             }
+//        });
         
         miExProf.addActionListener(new ActionListener() {
 
@@ -237,15 +235,6 @@ public class GuiMenu extends JFrame{
             }
         });
          
-         miNovaSenha.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent ae) {
-                GuiCadastrarUsuario novaSenha = new GuiCadastrarUsuario();
-                contentPane.removeAll();
-                contentPane.add(novaSenha);
-                contentPane.validate();
-            }
-        });
     }
       
     public static void mainMenu() {

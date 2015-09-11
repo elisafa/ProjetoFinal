@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import javax.swing.Action;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,15 +22,18 @@ public class GuiCadastrarFuncionario extends JPanel{
     
     ControleFuncionario controleFuncionario = new ControleFuncionario();
 
-    private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade, lbEmail, lbTelResi, lbTelCel, lbDataAdmissao, lbTitulo;
-    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula,tfBairro, tfCidade, tfEmail, tfDataAdmissao;
+    private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade,
+                   lbEmail, lbTelResi, lbTelCel, lbDataAdmissao, lbTitulo, lbCadastrar, lbSenha, lbLogin;
+    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula, tfEmail, tfDataAdmissao, tfLogin, tfSenha;
     private MaskFormatter ftTelResi,ftTelCel;
-    private JFormattedTextField ftfTelResi, ftfTelCel, ftfDataAdmissao;
+    private JFormattedTextField ftfTelResi, ftfTelCel;
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
-    private JComboBox cbUf;
+    private JComboBox cbUf, cbCidades, cbBairros;
     String[] cbEstadosItens = {"Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo", 
                                "Rio Grande do Norte"};
+    String[] cbCidadesItens = {"Maravilhas", "Pedro Velho", "Rio", "Santos", "Natal"};
+    String[] cbBairrosItens = {"Maria", "Fernandes", "Jose"};
     
     public GuiCadastrarFuncionario() throws ParseException{
         inicializarComponentes();
@@ -53,12 +57,19 @@ public class GuiCadastrarFuncionario extends JPanel{
         lbTelResi = new JLabel("Tel. Residencial");
         lbTelCel = new JLabel("Tel. Celular");
         lbUf = new JLabel("Estado");
+        lbCadastrar = new JLabel("Cadastre sua senha e login:");
+        lbSenha = new JLabel("Senha:");
+        lbLogin = new JLabel("Login:");
         rbMasculino = new JRadioButton("M");
         rbFeminino = new JRadioButton("F");
         cbUf = new JComboBox(cbEstadosItens);
+        cbCidades = new JComboBox();
+        cbBairros = new JComboBox();
+        cbCidades.setEnabled(false);
+        cbBairros.setEnabled(false);
         
-        tfBairro = new JTextField();
-        tfCidade = new JTextField();
+        //tfBairro = new JTextField();
+        //tfCidade = new JTextField();
         tfComplemento = new JTextField();
         tfMatricula = new JTextField();
         tfNome = new JTextField();
@@ -66,6 +77,8 @@ public class GuiCadastrarFuncionario extends JPanel{
         tfRua = new JTextField();
         tfEmail = new JTextField();
         tfDataAdmissao = new JTextField();
+        tfSenha = new JTextField();
+        tfLogin = new JTextField();
 
 //        ftDataAdmissao = new MaskFormatter("##/##/####");
         ftTelCel = new MaskFormatter("(##) #####-####");
@@ -107,8 +120,8 @@ public class GuiCadastrarFuncionario extends JPanel{
         
         lbBairro.setBounds(170, 145, 100, 25);
         add(lbBairro);
-        tfBairro.setBounds(170, 165, 150, 25);
-        add(tfBairro);
+        cbBairros.setBounds(170, 165, 150, 25);
+        add(cbBairros);
         
         lbComplemento.setBounds(25, 145, 100, 25);
         add(lbComplemento);
@@ -117,8 +130,8 @@ public class GuiCadastrarFuncionario extends JPanel{
         
         lbCidade.setBounds(325, 145, 100, 25);
         add(lbCidade);
-        tfCidade.setBounds(325, 165, 150, 25);
-        add(tfCidade);
+        cbCidades.setBounds(325, 165, 150, 25);
+        add(cbCidades);
         
         lbEmail.setBounds(170, 195, 100, 25);
         add(lbEmail);
@@ -150,14 +163,27 @@ public class GuiCadastrarFuncionario extends JPanel{
        tfMatricula.setBounds(350, 265, 125, 25);
        add(tfMatricula);
        
-       btCadastrar.setBounds(25,320, 100,25);
+       btCadastrar.setBounds(25,400, 100,25);
        add(btCadastrar);
        
-       btLimpar.setBounds(190, 320, 100, 25);
+       btLimpar.setBounds(190, 400, 100, 25);
        add(btLimpar);
        
-       btCancelar.setBounds(370, 320, 100, 25);
+       btCancelar.setBounds(370, 400, 100, 25);
        add(btCancelar);
+       
+       lbCadastrar.setBounds(25, 300,200, 25);
+       add(lbCadastrar);
+       
+       lbLogin.setBounds(25, 330, 100, 25);
+       add(lbLogin);
+       tfLogin.setBounds(65, 330, 100, 25);
+       add(tfLogin);
+       
+       lbSenha.setBounds(190, 330, 100, 25);
+       add(lbSenha);
+       tfSenha.setBounds(230, 330, 100, 25);
+       add(tfSenha);
     }
     
     public void definirEventos(){
@@ -174,8 +200,8 @@ public class GuiCadastrarFuncionario extends JPanel{
                 tfRua.setText(null);
                 tfComplemento.setText(null);
                 tfNumero.setText(null);
-                tfBairro.setText(null);
-                tfCidade.setText(null);
+                
+
                 tfEmail.setText(null);
                 ftfTelResi.setText(null);
                 ftfTelCel.setText(null);
@@ -184,34 +210,48 @@ public class GuiCadastrarFuncionario extends JPanel{
             }
         });
          
+      
          btCadastrar.addActionListener(new ActionListener() {
 
              public void actionPerformed(ActionEvent ae) {
-                 String sexo ="";
+                 int sexo;
                  String nome = tfNome.getText();
                  String rua = tfRua.getText();
                  String numero = tfNumero.getText();
                  String complemento = tfComplemento.getText();
-                 String bairro = tfBairro.getText();
-                 String cidade = tfCidade.getText();
                  String email = tfEmail.getText();
                  String telResi = ftfTelResi.getText();
                  String telCel = ftfTelCel.getText();
                  String dataAdmissao = tfDataAdmissao.getText();
+                 String login = tfLogin.getText();
+                 String senha = tfSenha.getText();
                  
                  if(rbFeminino.isSelected()){
-                     sexo = "1";
+                     sexo = 1;
                  }else{
-                     sexo = "2"; 
+                     sexo = 2; 
                  }
                  
-                String estado = String.valueOf(cbUf.getSelectedIndex());
+                int estado = cbUf.getSelectedIndex();
+                int cidade = cbCidades.getSelectedIndex();
+                int bairro = cbBairros.getSelectedIndex();
                  
-            controleFuncionario.cadastrarFuncionario(nome, sexo, rua, numero, complemento,
-                                                    bairro, cidade, estado, email,
-                                                    telResi, telCel, dataAdmissao);
+            controleFuncionario.cadastrarFuncionario(nome, login, numero, complemento, bairro, cidade, email, telResi, telCel, dataAdmissao, estado, sexo, login, senha);
              }
         });
+         
+        cbUf.addActionListener(new ActionListener() {
+
+             @Override
+             public void actionPerformed(ActionEvent ae) {
+                cbCidades.addItem(cbCidadesItens);
+                // = new JComboBox(cbCidadesItens);
+                cbCidades.setEnabled(true);
+                cbBairros = new JComboBox(cbBairrosItens);
+                cbBairros.setEnabled(true);
+                 System.out.println("OKOKOKOKOKOKO222222222222");
+             }
+         });
     }
 }
 
