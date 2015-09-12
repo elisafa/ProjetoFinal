@@ -3,12 +3,15 @@ package gui;
 
 import Controle.ControleAluno;
 import Controle.ControleFuncionario;
+import dao.FuncionarioDAO;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.util.ArrayList;
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
+import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -41,6 +44,7 @@ public class GuiCadastrarFuncionario extends JPanel{
     }
     
     public void inicializarComponentes() throws ParseException{
+           
         setLayout(null);
         
         lbTitulo = new JLabel("CADASTRO DE FUNCIONARIO", JLabel.CENTER);
@@ -62,8 +66,10 @@ public class GuiCadastrarFuncionario extends JPanel{
         lbLogin = new JLabel("Login:");
         rbMasculino = new JRadioButton("M");
         rbFeminino = new JRadioButton("F");
-        cbUf = new JComboBox(cbEstadosItens);
+        cbUf = new JComboBox();
         cbCidades = new JComboBox();
+        
+        
         cbBairros = new JComboBox();
         cbCidades.setEnabled(false);
         cbBairros.setEnabled(false);
@@ -240,16 +246,11 @@ public class GuiCadastrarFuncionario extends JPanel{
              }
         });
          
-        cbUf.addActionListener(new ActionListener() {
+         cbUf.addActionListener(new ActionListener() {
 
              @Override
-             public void actionPerformed(ActionEvent ae) {
-                cbCidades.addItem(cbCidadesItens);
-                // = new JComboBox(cbCidadesItens);
-                cbCidades.setEnabled(true);
-                cbBairros = new JComboBox(cbBairrosItens);
-                cbBairros.setEnabled(true);
-                 System.out.println("OKOKOKOKOKOKO222222222222");
+             public void actionPerformed(ActionEvent e) {
+                 cbUf = FuncionarioDAO.listarTudo();
              }
          });
     }
