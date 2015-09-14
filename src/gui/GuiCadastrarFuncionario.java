@@ -3,6 +3,7 @@ package gui;
 
 import Controle.ControleAluno;
 import Controle.ControleFuncionario;
+import dao.ConexaoDAO;
 import dao.FuncionarioDAO;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,13 +17,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 public class GuiCadastrarFuncionario extends JPanel{
-    
+    ConexaoDAO conexao = new ConexaoDAO();
     ControleFuncionario controleFuncionario = new ControleFuncionario();
 
     private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade,
@@ -66,13 +68,13 @@ public class GuiCadastrarFuncionario extends JPanel{
         lbLogin = new JLabel("Login:");
         rbMasculino = new JRadioButton("M");
         rbFeminino = new JRadioButton("F");
-        cbUf = new JComboBox();
+        cbUf = new JComboBox(conexao.listarEstado());
         cbCidades = new JComboBox();
         
         
         cbBairros = new JComboBox();
-        cbCidades.setEnabled(false);
-        cbBairros.setEnabled(false);
+//        cbCidades.setEnabled(false);
+//        cbBairros.setEnabled(false);
         
         //tfBairro = new JTextField();
         //tfCidade = new JTextField();
@@ -250,7 +252,13 @@ public class GuiCadastrarFuncionario extends JPanel{
 
              @Override
              public void actionPerformed(ActionEvent e) {
-                 cbUf = FuncionarioDAO.listarTudo();
+                 
+                 int estado = cbUf.getSelectedIndex()+1;
+                 cbCidades.setVisible(false);
+                 cbCidades = new JComboBox(conexao.listarCidades(estado));
+                 
+                 cbCidades.setBounds(325, 165, 150, 25);
+                 add(cbCidades);
              }
          });
     }
