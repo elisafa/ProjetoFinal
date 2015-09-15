@@ -1,23 +1,16 @@
 
 package gui;
 
-import Controle.ControleAluno;
 import Controle.ControleFuncionario;
 import dao.ConexaoDAO;
-import dao.FuncionarioDAO;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.ArrayList;
-import javax.swing.Action;
-import javax.swing.ButtonGroup;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -35,10 +28,11 @@ public class GuiCadastrarFuncionario extends JPanel{
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf, cbCidades, cbBairros;
-    String[] cbEstadosItens = {"Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo", 
-                               "Rio Grande do Norte"};
-    String[] cbCidadesItens = {"Maravilhas", "Pedro Velho", "Rio", "Santos", "Natal"};
-    String[] cbBairrosItens = {"Maria", "Fernandes", "Jose"};
+    
+//    String[] cbEstadosItens = {"Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo", 
+//                               "Rio Grande do Norte"};
+//    String[] cbCidadesItens = {"Maravilhas", "Pedro Velho", "Rio", "Santos", "Natal"};
+//    String[] cbBairrosItens = {"Maria", "Fernandes", "Jose"};
     
     public GuiCadastrarFuncionario() throws ParseException{
         inicializarComponentes();
@@ -68,16 +62,11 @@ public class GuiCadastrarFuncionario extends JPanel{
         lbLogin = new JLabel("Login:");
         rbMasculino = new JRadioButton("M");
         rbFeminino = new JRadioButton("F");
+        
         cbUf = new JComboBox(conexao.listarEstado());
         cbCidades = new JComboBox();
-        
-        
         cbBairros = new JComboBox();
-//        cbCidades.setEnabled(false);
-//        cbBairros.setEnabled(false);
         
-        //tfBairro = new JTextField();
-        //tfCidade = new JTextField();
         tfComplemento = new JTextField();
         tfMatricula = new JTextField();
         tfNome = new JTextField();
@@ -208,8 +197,6 @@ public class GuiCadastrarFuncionario extends JPanel{
                 tfRua.setText(null);
                 tfComplemento.setText(null);
                 tfNumero.setText(null);
-                
-
                 tfEmail.setText(null);
                 ftfTelResi.setText(null);
                 ftfTelCel.setText(null);
@@ -218,7 +205,6 @@ public class GuiCadastrarFuncionario extends JPanel{
             }
         });
          
-      
          btCadastrar.addActionListener(new ActionListener() {
 
              public void actionPerformed(ActionEvent ae) {
@@ -244,13 +230,13 @@ public class GuiCadastrarFuncionario extends JPanel{
                 int cidade = cbCidades.getSelectedIndex();
                 int bairro = cbBairros.getSelectedIndex();
                  
-            controleFuncionario.cadastrarFuncionario(nome, login, numero, complemento, bairro, cidade, email, telResi, telCel, dataAdmissao, estado, sexo, login, senha);
+            controleFuncionario.cadastrarFuncionario(nome, login, numero, complemento, bairro, cidade, email,
+                                                     telResi, telCel, dataAdmissao, estado, sexo, login, senha);
              }
         });
          
          cbUf.addActionListener(new ActionListener() {
 
-             @Override
              public void actionPerformed(ActionEvent e) {
                  
                  int estado = cbUf.getSelectedIndex()+1;
@@ -261,6 +247,19 @@ public class GuiCadastrarFuncionario extends JPanel{
                  add(cbCidades);
              }
          });
+         
+         cbUf.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                 
+                int cidade = cbCidades.getSelectedIndex()+1;
+                cbBairros.setVisible(false);
+                cbBairros = new JComboBox(conexao.listarBairros(cidade));
+                 
+                cbBairros.setBounds(170, 165, 150, 25);
+                add(cbBairros);
+            }
+        });
     }
 }
 
