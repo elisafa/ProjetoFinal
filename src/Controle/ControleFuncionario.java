@@ -12,20 +12,23 @@ public class ControleFuncionario {
                                String telResi, String telCel, String dataAdmissao, int estado, int sexo, String login, String senha){
         
         Funcionario funcionario = new Funcionario();
+        
         funcionario.setNome(nome);
-        funcionario.setNumero(numero);
-        funcionario.setBairro(bairro);
-        funcionario.setCidade(cidade);
-        funcionario.setDataAdmissao(dataAdmissao);
         funcionario.setLogradouro(logradouro);
-        funcionario.setComplemento(complemento);
+        funcionario.setNumero(numero);
+        funcionario.setDataAdmissao(dataAdmissao);
+        funcionario.setLogin(login);
+        funcionario.setSenha(senha);       
         funcionario.setSexo(sexo);
+        funcionario.setBairro(bairro);
+        
+        funcionario.setCidade(cidade);       
+        funcionario.setComplemento(complemento);
         funcionario.setEmail(email);
         funcionario.setTeleResidencial(telResi);
         funcionario.setTelCelular(telCel);
         funcionario.setUf(estado);
-        funcionario.setLogin(login);
-        funcionario.setSenha(senha);
+        
  
        funcionarioDAO.cadastrarFuncionario(funcionario);
     } 

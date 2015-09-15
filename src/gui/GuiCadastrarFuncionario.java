@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -28,11 +29,7 @@ public class GuiCadastrarFuncionario extends JPanel{
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf, cbCidades, cbBairros;
-    
-//    String[] cbEstadosItens = {"Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo", 
-//                               "Rio Grande do Norte"};
-//    String[] cbCidadesItens = {"Maravilhas", "Pedro Velho", "Rio", "Santos", "Natal"};
-//    String[] cbBairrosItens = {"Maria", "Fernandes", "Jose"};
+   
     
     public GuiCadastrarFuncionario() throws ParseException{
         inicializarComponentes();
@@ -226,40 +223,43 @@ public class GuiCadastrarFuncionario extends JPanel{
                      sexo = 2; 
                  }
                  
-                int estado = cbUf.getSelectedIndex();
-                int cidade = cbCidades.getSelectedIndex();
-                int bairro = cbBairros.getSelectedIndex();
+               int estado = cbUf.getSelectedIndex()+1;
+                int cidade = cbCidades.getSelectedIndex()+1;
+                int bairro = cbBairros.getSelectedIndex()+1;
                  
             controleFuncionario.cadastrarFuncionario(nome, login, numero, complemento, bairro, cidade, email,
                                                      telResi, telCel, dataAdmissao, estado, sexo, login, senha);
              }
         });
-         
+  
          cbUf.addActionListener(new ActionListener() {
 
              public void actionPerformed(ActionEvent e) {
                  
-                 int estado = cbUf.getSelectedIndex()+1;
+                 String estado = cbUf.getSelectedItem().toString();
+//                 
                  cbCidades.setVisible(false);
                  cbCidades = new JComboBox(conexao.listarCidades(estado));
-                 
+//                 
                  cbCidades.setBounds(325, 165, 150, 25);
                  add(cbCidades);
-             }
-         });
-         
-         cbUf.addActionListener(new ActionListener() {
+             
+                
+                 cbCidades.addActionListener(new ActionListener() {
 
-            public void actionPerformed(ActionEvent e) {
-                 
-                int cidade = cbCidades.getSelectedIndex()+1;
-                cbBairros.setVisible(false);
-                cbBairros = new JComboBox(conexao.listarBairros(cidade));
-                 
-                cbBairros.setBounds(170, 165, 150, 25);
-                add(cbBairros);
-            }
-        });
+                     public void actionPerformed(ActionEvent e) {
+                        String cidade = cbCidades.getSelectedItem().toString();
+                        
+                        cbBairros.setVisible(false);
+                        cbBairros = new JComboBox(conexao.listarBairros(cidade));
+
+                        cbBairros.setBounds(170, 165, 150, 25);
+                        add(cbBairros);
+                        
+                     }
+                 }); 
+             }
+         });                           
     }
 }
 

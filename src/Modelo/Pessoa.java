@@ -2,7 +2,7 @@ package Modelo;
 
 public class Pessoa {
     private String nome, logradouro, cpf, email, teleResidencial, TelCelular, numero, complemento;
-    private int codigo, uf, cidade, bairro, sexo;
+    private int codigo, uf, cidade, sexo, bairro;
 
     public String getNome() {
         return nome;
