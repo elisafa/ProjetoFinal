@@ -45,14 +45,18 @@ public class FuncionarioDAO {
             try {
             
             String sql2 = "SELECT FUN_CODIGO FROM TB_FUNCIONARIOS WHERE FUN_NOME = " + funcionario.getNome();
-            statement = conexaoBanco.conexao.prepareStatement(sql2);
-            ResultSet rs = statement.executeQuery();
+            String sql3 = "SELECT MAX(FUN_CODIGO) FROM TB_FUNCIONARIOS;";
             
+            statement = conexaoBanco.conexao.prepareStatement(sql3);
+            
+            ResultSet rs = statement.executeQuery();
+            int codigo = rs.getInt(sql3);
             
             String sql = "INSERT INTO TB_FONES_FUNCIONARIOS (FDF_FONES, FDF_FUN_CODIGO) VALUES (?,?);";
             
             statement = conexaoBanco.conexao.prepareStatement(sql);
             statement.setString(1, funcionario.getTeleResidencial());
+            statement.setInt(2, codigo);
             statement.execute();
             
 //            statement.close();            
