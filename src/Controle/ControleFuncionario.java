@@ -9,7 +9,7 @@ public class ControleFuncionario {
     
     public void cadastrarFuncionario(String nome, String logradouro, String numero, 
                                String complemento,int bairro, int cidade, String email, 
-                               String telResi, String telCel, String dataAdmissao, int estado, int sexo, String login, String senha){
+                               String telResi, String dataAdmissao, int estado, int sexo, String login, String senha){
         
         Funcionario funcionario = new Funcionario();
         
@@ -26,7 +26,7 @@ public class ControleFuncionario {
         funcionario.setComplemento(complemento);
         funcionario.setEmail(email);
         funcionario.setTeleResidencial(telResi);
-        funcionario.setTelCelular(telCel);
+//        funcionario.setTelCelular(telCel);
         funcionario.setUf(estado);
         
  

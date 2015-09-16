@@ -1,6 +1,5 @@
 package dao;
 
-import static dao.AlunoDAO.conexaoBanco;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -49,10 +48,10 @@ public class ConexaoDAO {
         
         ArrayList<String> estados = new ArrayList<>();
         
-        if (conexaoBanco.getConexao()) {
+        if (getConexao()) {
             try {
             String sql = "SELECT * FROM TB_UFS;";
-            statement = conexaoBanco.conexao.prepareStatement(sql);
+            statement = conexao.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 estados.add(rs.getString("UF_UF"));
@@ -75,10 +74,10 @@ public class ConexaoDAO {
         
         ArrayList<String> cidades = new ArrayList<>();
         
-        if (conexaoBanco.getConexao()) {
+        if (getConexao()) {
             try {            
             String sql = "SELECT CID_CIDADE FROM TB_CIDADES JOIN TB_UFS ON UF_CODIGO=CID_UF_CODIGO WHERE UF_UF = ?;";
-            statement = conexaoBanco.conexao.prepareStatement(sql);
+            statement = conexao.prepareStatement(sql);
             statement.setString(1, uf);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
@@ -102,10 +101,10 @@ public class ConexaoDAO {
         
         ArrayList<String> bairros = new ArrayList<>();
         
-        if (conexaoBanco.getConexao()) {
+        if (getConexao()) {
             try {            
             String sql = "SELECT BAI_BAIRRO FROM TB_BAIRROS JOIN TB_CIDADES ON CID_CODIGO=BAI_CID_CODIGO WHERE CID_CIDADE = ?;";
-            statement = conexaoBanco.conexao.prepareStatement(sql);
+            statement = conexao.prepareStatement(sql);
             statement.setString(1, cidade);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {

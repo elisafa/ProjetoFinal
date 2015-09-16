@@ -7,7 +7,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import javax.swing.JButton;
+import javax.swing.*;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -22,13 +22,14 @@ public class GuiCadastrarFuncionario extends JPanel{
     ControleFuncionario controleFuncionario = new ControleFuncionario();
 
     private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade,
-                   lbEmail, lbTelResi, lbTelCel, lbDataAdmissao, lbTitulo, lbCadastrar, lbSenha, lbLogin;
-    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula, tfEmail, tfDataAdmissao, tfLogin, tfSenha;
-    private MaskFormatter ftTelResi,ftTelCel;
-    private JFormattedTextField ftfTelResi, ftfTelCel;
+                   lbEmail, lbTelResi, lbDataAdmissao, lbTitulo, lbCadastrar, lbSenha, lbLogin;
+    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula, tfEmail, tfLogin, tfSenha;
+    private MaskFormatter ftTelResi,ftDataAdmissao;
+    private JFormattedTextField ftfTelResi,ftfDataAdmissao;
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
     private JComboBox cbUf, cbCidades, cbBairros;
+    
    
     
     public GuiCadastrarFuncionario() throws ParseException{
@@ -52,7 +53,7 @@ public class GuiCadastrarFuncionario extends JPanel{
         lbRua = new JLabel("Rua, Logradouro, Av., etc");
         lbSexo = new JLabel("Sexo");
         lbTelResi = new JLabel("Tel. Residencial");
-        lbTelCel = new JLabel("Tel. Celular");
+//        lbTelCel = new JLabel("Tel. Celular");
         lbUf = new JLabel("Estado");
         lbCadastrar = new JLabel("Cadastre sua senha e login:");
         lbSenha = new JLabel("Senha:");
@@ -70,17 +71,17 @@ public class GuiCadastrarFuncionario extends JPanel{
         tfNumero = new JTextField();
         tfRua = new JTextField();
         tfEmail = new JTextField();
-        tfDataAdmissao = new JTextField();
+//        tfDataAdmissao = new JTextField();
         tfSenha = new JTextField();
         tfLogin = new JTextField();
 
-//        ftDataAdmissao = new MaskFormatter("##/##/####");
-        ftTelCel = new MaskFormatter("(##) #####-####");
+        ftDataAdmissao = new MaskFormatter("##/##/####");
+//        ftTelCel = new MaskFormatter("(##) #####-####");
         ftTelResi = new MaskFormatter("(##) #####-####");
         
-//        ftfDataAdmissao = new JFormattedTextField(ftDataAdmissao);
+        ftfDataAdmissao = new JFormattedTextField(ftDataAdmissao);
         ftfTelResi = new JFormattedTextField(ftTelResi);
-        ftfTelCel = new JFormattedTextField(ftTelCel);
+//        ftfTelCel = new JFormattedTextField(ftTelCel);
         
         btCadastrar = new JButton("Cadastrar");
         btCancelar = new JButton("Cancelar");
@@ -142,20 +143,21 @@ public class GuiCadastrarFuncionario extends JPanel{
        ftfTelResi.setBounds(25, 265, 100, 25);
        add(ftfTelResi);
         
-       lbTelCel.setBounds(140, 245, 100, 25);
-       add(lbTelCel);
-       ftfTelCel.setBounds(140, 265, 100, 25);
-       add(ftfTelCel);
+//       lbTelCel.setBounds(140, 245, 100, 25);
+//       add(lbTelCel);
+//       ftfTelCel.setBounds(140, 265, 100, 25);
+//       add(ftfTelCel);
        
        lbDataAdmissao.setBounds(255, 245, 100, 25);
        add(lbDataAdmissao);
-       tfDataAdmissao.setBounds(255, 265, 70, 25);
-       add(tfDataAdmissao);
+       ftfDataAdmissao.setBounds(255, 265, 70, 25);
+       add(ftfDataAdmissao);
        
        lbMatricula.setBounds(350, 245, 100, 25);
        add(lbMatricula);
        tfMatricula.setBounds(350, 265, 125, 25);
        add(tfMatricula);
+       tfMatricula.setEnabled(false);
        
        btCadastrar.setBounds(25,400, 100,25);
        add(btCadastrar);
@@ -181,13 +183,14 @@ public class GuiCadastrarFuncionario extends JPanel{
     }
     
     public void definirEventos(){
-         btCancelar.addActionListener(new ActionListener() {
+        btCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
             }
         });
-         btLimpar.addActionListener(new ActionListener() {
+         
+        btLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 tfNome.setText(null);
@@ -196,8 +199,8 @@ public class GuiCadastrarFuncionario extends JPanel{
                 tfNumero.setText(null);
                 tfEmail.setText(null);
                 ftfTelResi.setText(null);
-                ftfTelCel.setText(null);
-                tfDataAdmissao.setText(null);
+//                ftfTelCel.setText(null);
+                ftfDataAdmissao.setText(null);
                 
             }
         });
@@ -212,8 +215,8 @@ public class GuiCadastrarFuncionario extends JPanel{
                  String complemento = tfComplemento.getText();
                  String email = tfEmail.getText();
                  String telResi = ftfTelResi.getText();
-                 String telCel = ftfTelCel.getText();
-                 String dataAdmissao = tfDataAdmissao.getText();
+//                 String telCel = ftfTelCel.getText();
+                 String dataAdmissao = ftfDataAdmissao.getText();
                  String login = tfLogin.getText();
                  String senha = tfSenha.getText();
                  
@@ -228,7 +231,7 @@ public class GuiCadastrarFuncionario extends JPanel{
                 int bairro = cbBairros.getSelectedIndex()+1;
                  
             controleFuncionario.cadastrarFuncionario(nome, login, numero, complemento, bairro, cidade, email,
-                                                     telResi, telCel, dataAdmissao, estado, sexo, login, senha);
+                                                     telResi, dataAdmissao, estado, sexo, login, senha);
              }
         });
   

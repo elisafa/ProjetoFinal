@@ -2,6 +2,8 @@
 package gui;
 
 import Controle.ControleAluno;
+import Controle.ControleFuncionario;
+import dao.ConexaoDAO;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -25,17 +27,20 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.MaskFormatter;
 
 public class GuiCadastroDeAlunos extends JPanel {
-    
+     
+    ConexaoDAO conexao = new ConexaoDAO();
     ControleAluno controleAluno = new ControleAluno();
-    
-    private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade, lbEmail, lbTelResi, lbTelCel, lbDataMatricula, lbTitulo;
-    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula,tfBairro, tfCidade, tfEmail;
-    private MaskFormatter ftTelResi,ftTelCel, ftDataMatricula;
-    private JFormattedTextField ftfTelResi, ftfTelCel, ftfDataMatricula;
+
+    private JLabel lbNome, lbRua, lbComplemento, lbNumero,lbMatricula, lbSexo, lbUf, lbBairro,lbCidade,
+                   lbEmail, lbTelResi, lbDataAdmissao, lbTitulo;
+    private JTextField tfNome, tfRua, tfComplemento, tfNumero, tfMatricula, tfEmail, tfLogin, tfSenha;
+    private MaskFormatter ftTelResi,ftDataAdmissao;
+    private JFormattedTextField ftfTelResi,ftfDataMatricula;
     private JButton btLimpar, btCancelar, btCadastrar;
     private JRadioButton rbMasculino, rbFeminino;
-    private JComboBox cbUf;
-    private ButtonGroup grupo;
+    private JComboBox cbUf, cbCidades, cbBairros;
+    
+   
     
     public GuiCadastroDeAlunos() throws ParseException{
         inicializarComponentes();
@@ -43,13 +48,14 @@ public class GuiCadastroDeAlunos extends JPanel {
     }
     
     public void inicializarComponentes() throws ParseException{
+           
         setLayout(null);
         
-        lbTitulo = new JLabel("CADASTRO DE ALUNOS", JLabel.CENTER);
+        lbTitulo = new JLabel("CADASTRO DE ALUNO", JLabel.CENTER);
         lbBairro = new JLabel("Bairro");
         lbCidade = new JLabel("Cidade");
         lbComplemento = new JLabel("Complemento");
-        lbDataMatricula = new JLabel("Dt. Matrícula");
+        lbDataAdmissao = new JLabel("Dt. Admissao");
         lbEmail = new JLabel("E-mail");
         lbMatricula = new JLabel("Matrícula");
         lbNome = new JLabel("Nome");
@@ -57,29 +63,35 @@ public class GuiCadastroDeAlunos extends JPanel {
         lbRua = new JLabel("Rua, Logradouro, Av., etc");
         lbSexo = new JLabel("Sexo");
         lbTelResi = new JLabel("Tel. Residencial");
-        lbTelCel = new JLabel("Tel. Celular");
+//        lbTelCel = new JLabel("Tel. Celular");
         lbUf = new JLabel("Estado");
+//        lbCadastrar = new JLabel("Cadastre sua senha e login:");
+//        lbSenha = new JLabel("Senha:");
+//        lbLogin = new JLabel("Login:");
         rbMasculino = new JRadioButton("M");
         rbFeminino = new JRadioButton("F");
-        cbUf = new JComboBox();
-        grupo = new ButtonGroup();
         
-        tfBairro = new JTextField();
-        tfCidade = new JTextField();
+        cbUf = new JComboBox(conexao.listarEstado());
+        cbCidades = new JComboBox();
+        cbBairros = new JComboBox();
+        
         tfComplemento = new JTextField();
         tfMatricula = new JTextField();
         tfNome = new JTextField();
         tfNumero = new JTextField();
         tfRua = new JTextField();
         tfEmail = new JTextField();
+//        tfDataAdmissao = new JTextField();
+        tfSenha = new JTextField();
+        tfLogin = new JTextField();
 
-        ftDataMatricula = new MaskFormatter("##/##/####");
-        ftTelCel = new MaskFormatter("(##) #####-####");
+        ftDataAdmissao = new MaskFormatter("##/##/####");
+//        ftTelCel = new MaskFormatter("(##) #####-####");
         ftTelResi = new MaskFormatter("(##) #####-####");
         
-        ftfDataMatricula = new JFormattedTextField(ftDataMatricula);
+        ftfDataMatricula = new JFormattedTextField(ftDataAdmissao);
         ftfTelResi = new JFormattedTextField(ftTelResi);
-        ftfTelCel = new JFormattedTextField(ftTelCel);
+//        ftfTelCel = new JFormattedTextField(ftTelCel);
         
         btCadastrar = new JButton("Cadastrar");
         btCancelar = new JButton("Cancelar");
@@ -101,9 +113,6 @@ public class GuiCadastroDeAlunos extends JPanel {
         rbFeminino.setBounds(430, 65,50, 25);
         add(rbFeminino);
         
-        grupo.add(rbMasculino);
-        grupo.add(rbFeminino);
-        
         lbRua.setBounds(25, 95, 300, 25);
         add(lbRua);
         tfRua.setBounds(25, 115, 350, 25);
@@ -116,8 +125,8 @@ public class GuiCadastroDeAlunos extends JPanel {
         
         lbBairro.setBounds(170, 145, 100, 25);
         add(lbBairro);
-        tfBairro.setBounds(170, 165, 150, 25);
-        add(tfBairro);
+        cbBairros.setBounds(170, 165, 150, 25);
+        add(cbBairros);
         
         lbComplemento.setBounds(25, 145, 100, 25);
         add(lbComplemento);
@@ -126,8 +135,8 @@ public class GuiCadastroDeAlunos extends JPanel {
         
         lbCidade.setBounds(325, 145, 100, 25);
         add(lbCidade);
-        tfCidade.setBounds(325, 165, 150, 25);
-        add(tfCidade);
+        cbCidades.setBounds(325, 165, 150, 25);
+        add(cbCidades);
         
         lbEmail.setBounds(170, 195, 100, 25);
         add(lbEmail);
@@ -137,7 +146,6 @@ public class GuiCadastroDeAlunos extends JPanel {
         lbUf.setBounds(25, 195, 100, 25);
         add(lbUf);
         cbUf.setBounds(25, 215,140, 25);
-        
         add(cbUf);
         
        lbTelResi.setBounds(25, 245, 100, 25);
@@ -145,13 +153,13 @@ public class GuiCadastroDeAlunos extends JPanel {
        ftfTelResi.setBounds(25, 265, 100, 25);
        add(ftfTelResi);
         
-       lbTelCel.setBounds(140, 245, 100, 25);
-       add(lbTelCel);
-       ftfTelCel.setBounds(140, 265, 100, 25);
-       add(ftfTelCel);
+//       lbTelCel.setBounds(140, 245, 100, 25);
+//       add(lbTelCel);
+//       ftfTelCel.setBounds(140, 265, 100, 25);
+//       add(ftfTelCel);
        
-       lbDataMatricula.setBounds(255, 245, 100, 25);
-       add(lbDataMatricula);
+       lbDataAdmissao.setBounds(255, 245, 100, 25);
+       add(lbDataAdmissao);
        ftfDataMatricula.setBounds(255, 265, 70, 25);
        add(ftfDataMatricula);
        
@@ -159,68 +167,110 @@ public class GuiCadastroDeAlunos extends JPanel {
        add(lbMatricula);
        tfMatricula.setBounds(350, 265, 125, 25);
        add(tfMatricula);
+       tfMatricula.setEnabled(false);
        
-       btCadastrar.setBounds(25,320, 100,25);
+       btCadastrar.setBounds(25,400, 100,25);
        add(btCadastrar);
        
-       btLimpar.setBounds(190, 320, 100, 25);
+       btLimpar.setBounds(190, 400, 100, 25);
        add(btLimpar);
        
-       btCancelar.setBounds(370, 320, 100, 25);
+       btCancelar.setBounds(370, 400, 100, 25);
        add(btCancelar);
+       
+//       lbCadastrar.setBounds(25, 300,200, 25);
+//       add(lbCadastrar);
+       
+//       lbLogin.setBounds(25, 330, 100, 25);
+//       add(lbLogin);
+//       tfLogin.setBounds(65, 330, 100, 25);
+//       add(tfLogin);
+//       
+//       lbSenha.setBounds(190, 330, 100, 25);
+//       add(lbSenha);
+//       tfSenha.setBounds(230, 330, 100, 25);
+//       add(tfSenha);
     }
     
     public void definirEventos(){
-         btCancelar.addActionListener(new ActionListener() {
-
+        btCancelar.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent ae) {
-                setVisible(false);  
+                setVisible(false);
             }
         });
          
-         btLimpar.addActionListener(new ActionListener() {
+        btLimpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 tfNome.setText(null);
                 tfRua.setText(null);
                 tfComplemento.setText(null);
                 tfNumero.setText(null);
-                tfBairro.setText(null);
-                tfCidade.setText(null);
                 tfEmail.setText(null);
                 ftfTelResi.setText(null);
-                ftfTelCel.setText(null);
+//                ftfTelCel.setText(null);
                 ftfDataMatricula.setText(null);
+                
             }
         });
          
          btCadastrar.addActionListener(new ActionListener() {
 
              public void actionPerformed(ActionEvent ae) {
-                 String sexo ="";
+                 int sexo;
                  String nome = tfNome.getText();
                  String rua = tfRua.getText();
                  String numero = tfNumero.getText();
                  String complemento = tfComplemento.getText();
-                 int bairro = 1;// tfBairro.getText();
-                 int cidade = 1; //tfCidade.getText();
                  String email = tfEmail.getText();
                  String telResi = ftfTelResi.getText();
-                 String telCel = ftfTelCel.getText();
-                 String dataMatricula = ftfDataMatricula.getText();
+//                 String telCel = ftfTelCel.getText();
+                 String dataAdmissao = ftfDataMatricula.getText();
+//                 String login = tfLogin.getText();
+//                 String senha = tfSenha.getText();
                  
                  if(rbFeminino.isSelected()){
-                     sexo = rbFeminino.getText();
+                     sexo = 1;
                  }else{
-                     sexo = rbMasculino.getText(); 
+                     sexo = 2; 
                  }
                  
-                //String estado = cbUf.toString();
-                int estado = 1;
-                controleAluno.cadastrarAluno(nome, numero, numero, complemento, dataMatricula, bairro, cidade, email, telResi, telCel, estado);
+               int estado = cbUf.getSelectedIndex()+1;
+                int cidade = cbCidades.getSelectedIndex()+1;
+                int bairro = cbBairros.getSelectedIndex()+1;
                  
+            controleAluno.cadastrarAluno(nome, numero, numero, complemento, dataAdmissao, bairro, cidade, email, telResi, telResi, estado);
              }
-         });
+        });
+  
+         cbUf.addActionListener(new ActionListener() {
+
+             public void actionPerformed(ActionEvent e) {
+                 
+                 String estado = cbUf.getSelectedItem().toString();
+//                 
+                 cbCidades.setVisible(false);
+                 cbCidades = new JComboBox(conexao.listarCidades(estado));
+//                 
+                 cbCidades.setBounds(325, 165, 150, 25);
+                 add(cbCidades);
+             
+                
+                 cbCidades.addActionListener(new ActionListener() {
+
+                     public void actionPerformed(ActionEvent e) {
+                        String cidade = cbCidades.getSelectedItem().toString();
+                        
+                        cbBairros.setVisible(false);
+                        cbBairros = new JComboBox(conexao.listarBairros(cidade));
+
+                        cbBairros.setBounds(170, 165, 150, 25);
+                        add(cbBairros);
+                        
+                     }
+                 }); 
+             }
+         });                           
     }
-    
 }
