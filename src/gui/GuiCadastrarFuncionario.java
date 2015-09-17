@@ -113,30 +113,45 @@ public class GuiCadastrarFuncionario extends JPanel{
         tfNumero.setBounds(380, 115, 94, 25);
         add(tfNumero);
         
-        lbBairro.setBounds(170, 145, 100, 25);
-        add(lbBairro);
-        cbBairros.setBounds(170, 165, 150, 25);
-        add(cbBairros);
-        
-        lbComplemento.setBounds(25, 145, 100, 25);
-        add(lbComplemento);
-        tfComplemento.setBounds(25, 165, 140, 25);
-        add(tfComplemento);
+        lbUf.setBounds(170, 145, 100, 25);
+        add(lbUf);
+        cbUf.setBounds(170, 165, 150, 25);
+        add(cbUf);
         
         lbCidade.setBounds(325, 145, 100, 25);
         add(lbCidade);
         cbCidades.setBounds(325, 165, 150, 25);
         add(cbCidades);
         
+        lbBairro.setBounds(25, 195, 100, 25);
+        add(lbBairro);
+        cbBairros.setBounds(25, 215,140, 25);
+        add(cbBairros);
+        
+//        lbBairro.setBounds(170, 145, 100, 25);
+//        add(lbBairro);
+//        cbBairros.setBounds(170, 165, 150, 25);
+//        add(cbBairros);
+        
+        lbComplemento.setBounds(25, 145, 100, 25);
+        add(lbComplemento);
+        tfComplemento.setBounds(25, 165, 140, 25);
+        add(tfComplemento);
+        
+//        lbCidade.setBounds(325, 145, 100, 25);
+//        add(lbCidade);
+//        cbCidades.setBounds(325, 165, 150, 25);
+//        add(cbCidades);
+        
         lbEmail.setBounds(170, 195, 100, 25);
         add(lbEmail);
         tfEmail.setBounds(170, 215, 305, 25);
         add(tfEmail);
         
-        lbUf.setBounds(25, 195, 100, 25);
-        add(lbUf);
-        cbUf.setBounds(25, 215,140, 25);
-        add(cbUf);
+//        lbUf.setBounds(25, 195, 100, 25);
+//        add(lbUf);
+//        cbUf.setBounds(25, 215,140, 25);
+//        add(cbUf);
         
        lbTelResi.setBounds(25, 245, 100, 25);
        add(lbTelResi);
@@ -230,7 +245,7 @@ public class GuiCadastrarFuncionario extends JPanel{
                 int cidade = cbCidades.getSelectedIndex()+1;
                 int bairro = cbBairros.getSelectedIndex()+1;
                  
-            controleFuncionario.cadastrarFuncionario(nome, login, numero, complemento, bairro, cidade, email,
+            controleFuncionario.cadastrarFuncionario(nome, rua, numero, complemento, bairro, cidade, email,
                                                      telResi, dataAdmissao, estado, sexo, login, senha);
              }
         });
@@ -256,8 +271,8 @@ public class GuiCadastrarFuncionario extends JPanel{
                         cbBairros.setVisible(false);
                         cbBairros = new JComboBox(conexao.listarBairros(cidade));
 
-                        cbBairros.setBounds(170, 165, 150, 25);
-                        add(cbBairros);
+                    cbBairros.setBounds(25, 215,140, 25);
+                    add(cbBairros);
                         
                      }
                  }); 

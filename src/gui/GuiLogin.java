@@ -1,5 +1,6 @@
 package gui;
 
+import Modelo.Funcionario;
 import dao.ConexaoDAO;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -7,6 +8,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -96,8 +101,8 @@ public class GuiLogin extends JFrame{
                 String nome = tfLogin.getText();
                 String senha = String.valueOf(pfSenha.getPassword());
                 ConexaoDAO conectarBanco = new ConexaoDAO();
-                
-                if(nome.equals("") && senha.equals("")){
+
+                if((nome.equals("") && senha.equals(""))){
                     conectarBanco.getConexao();
                     GuiMenu.mainMenu();
                     setVisible(false);
@@ -125,7 +130,8 @@ public class GuiLogin extends JFrame{
                 guiLogin.setVisible(true);
             }
         });
-    }   
+    } 
+    
 }
 
 

@@ -1,5 +1,6 @@
 package gui;
 
+import dao.AlunoDAO;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class GuiConsultarAlunos extends JPanel{
-    private JLabel lbTitulo, lbMatricula, lbNome, lbRua, lbNumero, lbBairro, lbTelResi, lbTelCel, lbUf, lbCidade;
+    private JLabel lbTitulo, lbMatricula, lbNome, lbRua, lbNumero, lbBairro, lbTelResi, lbTelCel, lbUf, lbCidade, nomeAluno;
     private JTextField tfMatricula;
     private JButton btLimpar, btCancelar, btConsultar;
     
@@ -31,6 +32,8 @@ public class GuiConsultarAlunos extends JPanel{
         lbTelResi = new JLabel("Tel. Residencial:");
         lbTelCel = new JLabel("Tel Celular:");
         lbNumero = new JLabel("Número:");
+        
+        
         tfMatricula = new JTextField();
         
         btConsultar = new JButton("Consultar");
@@ -48,6 +51,8 @@ public class GuiConsultarAlunos extends JPanel{
         
         lbNome.setBounds(25, 90, 100, 25);
         add(lbNome);
+       
+
         lbRua.setBounds(25, 120, 100, 25);
         add(lbRua);
         lbNumero.setBounds(25, 150, 100, 25);
@@ -79,5 +84,18 @@ public class GuiConsultarAlunos extends JPanel{
                 setVisible(false);
             }
         });
+        
+        btConsultar.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                String matricula = tfMatricula.getText();
+                
+                AlunoDAO aluno = new AlunoDAO();
+                aluno.consultarAluno(matricula);
+
+            }
+        });
     }
+    
+    
 }

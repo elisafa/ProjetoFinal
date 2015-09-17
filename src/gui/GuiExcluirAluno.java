@@ -1,5 +1,6 @@
 package gui;
 
+import dao.AlunoDAO;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,6 +56,16 @@ public class GuiExcluirAluno extends JPanel{
 
             public void actionPerformed(ActionEvent ae) {
                 setVisible(false);
+            }
+        });
+        
+        btExcluir.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                String matricula = tfMatricula.getText();
+                
+                AlunoDAO aluno = new AlunoDAO();
+                aluno.excluirAluno(matricula);
             }
         });
     }
