@@ -2,28 +2,24 @@
 package gui;
 
 import Controle.ControleAluno;
-import Controle.ControleFuncionario;
+
 import dao.ConexaoDAO;
-import java.awt.Container;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ButtonGroup;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.text.AbstractDocument;
+
 import javax.swing.text.MaskFormatter;
 
 public class GuiCadastroDeAlunos extends JPanel {

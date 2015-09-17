@@ -42,7 +42,7 @@ public class GuiLogin extends JFrame{
         lbTitulo = new JLabel("Insira seu nome e senha");
         lbLogin = new JLabel("Login");
         lbSenha = new JLabel("Senha");
-        imagem = new ImageIcon("g:/SENAC/PROJETO FINAL/seminarioLogo.jpg");
+        imagem = new ImageIcon("e:/SENAC/PROJETO FINAL/seminarioLogo.jpg");
 
         lbImagem = new JLabel(imagem);
         tfLogin = new JTextField();
